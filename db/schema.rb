@@ -19,21 +19,6 @@ ActiveRecord::Schema.define(version: 20170414104449) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "blog1s", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "comment1s", force: :cascade do |t|
-    t.string   "commenter"
-    t.text     "body"
-    t.integer  "blog_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["blog_id"], name: "index_comment1s_on_blog_id"
-  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "commenter"
