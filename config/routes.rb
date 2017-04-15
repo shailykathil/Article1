@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   #root 'welcome#show'
   get 'welcome/show'
-  #root 'blogs#index'
+  root 'articles#index'
   resources :articles do
   resources :comments 
   #resources :blogs do
