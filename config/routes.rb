@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
-  root 'welcome#show'
+  #root 'welcome#show'
   get 'welcome/show'
   #root 'blogs#index'
   resources :articles do
