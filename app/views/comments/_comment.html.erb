@@ -16,3 +16,11 @@
 <p>
   <%= link_to 'Edit Comment', edit_article_comment_path(comment.article, comment) %>
 </p>
+<h2> reply a comment</h2>
+<% @replies= Reply.where(:comment_id=> comment.id)
+%>
+
+<%@replies.each do |reply|%>
+  <p><strong>Reply:</strong>><%=reply.body%></p>
+<%end%>
+<%= render 'replies/form', :comment=>comment %>

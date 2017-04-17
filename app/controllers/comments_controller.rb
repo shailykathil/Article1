@@ -1,8 +1,19 @@
 class CommentsController < ApplicationController
  
+ def index
+   @users = User.all
+   @inquiries = Inquiry.all
+   end
+
+  def new
+    @user = User.find_by(id: params[:user])
+    @article = Article.find(params[:article_id])
+    @comment = @article.inquiries.new
+    @message = @comment.replies.build
+  end
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    @comment = @article.comments.create!(comment_params)
     redirect_to article_path(@article)
   end
 
