@@ -21,6 +21,9 @@
 %>
 
 <%@replies.each do |reply|%>
-  <p><strong>Reply:</strong>><%=reply.body%></p>
+  <p>
+  <strong>Reply:</strong>
+  <%=reply.body%>
+  </p>
 <%end%>
 <%= render 'replies/form', :comment=>comment %>

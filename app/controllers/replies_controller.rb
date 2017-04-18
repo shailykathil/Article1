@@ -3,10 +3,10 @@ class RepliesController < ApplicationController
     @comment = Comment.find(params[:comment_id])
   end
 
-  def index
-    @replies = @comment.replies
-    @reply = @comment.replies.new
-  end
+  #def index
+   # @replies = @comment.replies
+    #@reply = @comment.replies.new
+  #end
 
   def new
     @reply = @comment.replies.new
