@@ -5,7 +5,8 @@
     <th>Title</th>
     <th>Text</th>
     <th>Image</th>
-    <th colspan="4"></th>
+    <th>Video</th>
+    <th colspan="5"></th>
   </tr>
  
   <% @articles.each do |article| %>
@@ -13,6 +14,7 @@
       <td><%= article.title %></td>
       <td><%= article.text %></td>
       <td><%= image_tag article.image, :height=>"200", :width=>"200" %></td>
+      <td><%= video_tag article.video, :controls=>true, :height=>"200", :width=>"400" %></td>
       <td><%= link_to 'Show', article_path(article) %></td>
       <td><%= link_to 'Edit', edit_article_path(article) %></td>
       <td><%= link_to 'Destroy', article_path(article),

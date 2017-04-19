@@ -12,6 +12,10 @@
   <strong>Image:</strong>
  <%= image_tag @article.image, :height=>"200", :width=>"200" %>
 </p>
+<p>
+  <strong>Video:</strong>
+ <%= video_tag @article.video, :controls=>true, :height=>"200", :width=>"400" %>
+</p>
  
 <h2>Comments</h2>
 <%= render @article.comments %>

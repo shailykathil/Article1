@@ -3,5 +3,5 @@ class Article < ApplicationRecord
   validates :title, presence: true,
                     length: { minimum: 5 }
    mount_uploader :image, AvatarUploader
-
+   mount_uploader :video, VideoUploader
 end

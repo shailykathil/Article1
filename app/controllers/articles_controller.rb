@@ -41,6 +41,6 @@ def destroy
 end
 private
  def article_params
-    params.require(:article).permit(:title, :text, :image)
+    params.require(:article).permit(:title, :text, :image, :video)
   end
 end
