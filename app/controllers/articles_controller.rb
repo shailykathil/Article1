@@ -14,16 +14,22 @@ class ArticlesController < ApplicationController
   def edit
   @article = Article.find(params[:id])
 end
+
   def create
   @article = Article.new(article_params)
    if @article.save
+   params[:article][:image].each do |image|
+   Image.create(:image=> image, article_id: @article.id)
+   end
     redirect_to @article
   else
     render 'new'
   end
   end
+
   def ar
   end
+
  def update
   @article = Article.find(params[:id])
  
@@ -41,6 +47,6 @@ def destroy
 end
 private
  def article_params
-    params.require(:article).permit(:title, :text, :image, :video)
+    params.require(:article).permit(:title, :text, :image, :video, :category_id)
   end
 end

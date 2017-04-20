@@ -8,3 +8,11 @@ development:
   username: root
   password: root
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: blog_db
+  pool: 5
+  username: root
+  password: root
+

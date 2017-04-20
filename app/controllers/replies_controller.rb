@@ -13,6 +13,7 @@ class RepliesController < ApplicationController
   end
 
   def create
+  
     @reply =  Reply.new(:body=>params[:reply][:body],:comment_id=>params[:reply][:comment_id])
     @reply.save
     flash[:notice]= "replies created"
