@@ -1,7 +1,15 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show]
   def index
-     @articles = Article.all
+     if params[:search].present?
+        @articles = Article.where('title LIKE ? OR text LIKE ?', "%#{params[:search]}%",
+        "%#{params[:search]}%")
+      elsif params[:start_date].present? && params[:end_date].present?
+      @articles = Article.where('created_at >= ? AND created_at <=?',
+      params[:start_date].to_date, params[:end_date].to_date) 
+      else 
+        @articles = Article.all 
+     end
   end
 
   def show
@@ -16,7 +24,7 @@ class ArticlesController < ApplicationController
 end
 
   def create
-  @article = Article.new(article_params)
+   @article = Article.new(article_params)
    if @article.save
    params[:article][:image].each do |image|
    Image.create(:image=> image, article_id: @article.id)
@@ -33,7 +41,15 @@ end
  def update
   @article = Article.find(params[:id])
  
-  if @article.update(article_params)
+   if @article.update(article_params)
+     # images = Image.where(:article_id=>@article.id)
+     images = @article.images
+       if params[:article][:image].present?
+       images.destroy_all
+       params[:article][:image].each do |image|
+       Image.create(:image=> image, article_id: @article.id)
+   end
+ end
     redirect_to @article
   else
     render 'edit'
